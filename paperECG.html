@@ -48,12 +48,16 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Paper Electrocardiogram (ECG) Digitization</h1>
+							<h1 >Paper Electrocardiogram Digitization</h1>
+							<ul class="actions">
+								<li><a href="https://github.com/Tereshchenkolab/paper-ecg" class="button">View on Github</a></li>
+							</ul>
+							
 							<h2>Overview</h2>
 								<p>
 									This project is being completed as part of Oregon State University's Senior Capstone Design course. A fellow student, Julian Fortune, and I
 									are working with Dr. Larisa Tereschenko, a clinical researcher at OHSU, to develop an open-source digitization application that converts 
-									paper ECG images into digital signals. 	 
+									paper electrocardiogram (ECG) images into digital signal data. 	 
 								</p>
 							<h2>Motivation</h2>
 								<p>
@@ -61,7 +65,63 @@
 									the lab will enable her to leverage large stores of paper ECG data and advance her research on heart disease. Furthermore, the free availability of this 
 									tool will enable the entire field of cardiovascular researchers to digitally analyze these paper-only data sets.
 								</p>
-							
+							<h2>Design</h2>
+								<h3>Goals</h3>
+								<p>
+									Our goal for this project was to build a desktop application with an intuitive graphical user interface (GUI) that takes in a scanned ECG image
+									and outputs the signal data to a CSV or text file. We aimed automate the process as much as possible, minimizing human intervention and streamlining
+									the process of digitizing large datasets.
+								</p>
+								<h3>Tools</h3>
+								<p>
+									<ul>
+										<li>Language: <a href="https://www.python.org/downloads/">Python (version 3.6.7)</a></li>
+										<li>GUI Framework: <a hfref="https://pypi.org/project/PyQt5/">PyQt5</a></li>
+										<li>Packaging and Build system: <a href="https://build-system.fman.io/">Fman Build System</a></li>
+									</ul>
+								</p>
+								<h3>Process Flow</h3>
+								<p>
+									<img src="images/paperEcgProcessFlowDiagram(med).png" alt="Process Flow Diagram" width="800" height="456">
+								</p>
+							<h2>Implementation</h2>
+								<p>
+									Our application's interface consists of an editor, which is split into a graphics view and a control panel.
+									<p>
+										<img src="images/paperEcgInitialScreen(med).JPG" alt="Initial Application Screen" width="768" height="408">
+									</p>
+								</p>
+								<p>
+									Once a user imports an ECG image into the application, they can make any adjustments to the image's brightness, contrast, or rotation as needed to
+									enhance the readablity of the scan. Then they can begin localizing each lead using rectangular bounding boxes.
+									<p>
+										<img src="images/paperEcgLeadSelection(med).JPG" alt="Lead Localization" width="768" height="408">
+									</p>
+								</p>
+								<p>
+									After all desired leads are localized, they can be processed using the Process Lead Data button on the control panel. If the signal extraction is successful,
+									a dialog pops up allowing the user to pick a export path. To ensure accuracy before exporting, the user may preview a visual representation of the extracted signal 
+									overlayed on the original lead.
+									<p>
+										<img src="images/paperEcgExportDialog(med).jpg" alt="Export Dialog" width="768" height="408">
+										<img src="images/paperEcgLeadPreview(med).jpg" alt="Lead Preview" width="768" height="408">
+									</p>
+								</p>
+								<p>Here's a quick demo: </p>
+								<video width="1536" height="816" controls>
+									<source src="videos/paperECGdemo.mp4" type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+								<h2>My Contributions</h2>
+								<p>
+									For this project I was in charge of our GUI design and implementation. This meant writing code for all user facing components of the
+									application and transforming all user input into a model that could be processed and turn into digital signal data. I followed the Model-View-Controller (MVC)
+									design architecture for this. All GUI components are the 'view' of the application, which the user can interact with to change the model. As the view changes (e.g. localizing leads),
+									the GUI element sends a signal to the controller with the new data, and the controller then updates an internal ECG 'model'. The built in signals and slots of the PyQt5 framework made
+									implementing this MVC design a breeze. Each GUI component is able to emit a signal when it is updated, and the controller can simply connect a callback function to that signal to execute
+									model updates as needed. Most of my code contributions can be found under the model/, views/, and controllers/ directories on our Github 
+									<a href="https://github.com/Tereshchenkolab/paper-ecg/tree/master/src/main/python">here</a>.
+								</p>
 						</div>
 					</div>
 
