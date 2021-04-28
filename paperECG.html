@@ -107,7 +107,8 @@
 										<img src="images/paperEcgLeadPreview(med).jpg" alt="Lead Preview" width="768" height="408">
 									</p>
 								</p>
-								<p>Here's a quick demo:
+								<p>Here's a quick demo: </p>
+								<p>
 									<video width="1152" height="612" controls>
 										<source src="videos/paperECGdemo.mp4" type="video/mp4">
 										Your browser does not support the video tag.
@@ -116,7 +117,7 @@
 								<h2>My Contributions</h2>
 								<p>
 									For this project I was in charge of our GUI design and implementation. This meant writing code for all user facing components of the
-									application and transforming all user input into a model that could be processed and turn into digital signal data. I followed the Model-View-Controller (MVC)
+									application and transforming all user input into a model that could be processed and turned into digital signal data. I followed the Model-View-Controller (MVC)
 									design architecture for this. All GUI components are the 'view' of the application, which the user can interact with to change the model. As the view changes (e.g. localizing leads),
 									the GUI element sends a signal to the controller with the new data, and the controller then updates an internal ECG 'model'. The built in signals and slots of the PyQt5 framework made
 									implementing this MVC design a breeze. Each GUI component is able to emit a signal when it is updated, and the controller can simply connect a callback function to that signal to execute
